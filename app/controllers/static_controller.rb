@@ -1,0 +1,19 @@
+class StaticController < ApplicationController
+  def home
+  end
+
+  def about
+  end
+
+  def cities
+  end
+
+  def self_sufficiency
+  end
+
+  def join
+  end
+
+  def contact
+  end
+end
