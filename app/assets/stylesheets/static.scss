@@ -6,10 +6,19 @@
   height: 100%;
   background: #051321;
 }
-#earth_div{top: 0; right: 0; bottom: 0; left: 0;
+#earth_div {
+  span {
+  color: darken(#E3183C, 30%) !important;
+}
+  cursor: grab;
+  &:active {
+    cursor: grabbing;
+  }
+  top: 0; right: 0; bottom: 0; left: 0;
 background-color: #000; position: absolute !important;}
 
 .we-pp-wrapper {
+  font-size: 0.8em;
   background: #E3183C !important;
   box-shadow: none !important;
   color: #FFF !important;
@@ -29,5 +38,8 @@ background-color: #000; position: absolute !important;}
   display: none !important;
 }
 .we-pm-icon {
+  pointer-events: none;
+}
+.we-pp {
   pointer-events: none;
 }
