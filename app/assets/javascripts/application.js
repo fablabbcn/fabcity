@@ -37,29 +37,42 @@ $(document).ready(function() {
 
 if ($('#earth_div').length > 0) {
   var options = {atmosphere: true, center: [0, 0], zoom: 8};
-  var earth = new WE.map('earth_div');
-  WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png').addTo(earth);
+  var earth = new WE.map('earth_div', {minAltitude: 40000, maxAltitude: 10000000});
+  WE.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',{
+  }).addTo(earth);
 
   var marker = WE.marker([41.3909267,2.1673073]).addTo(earth);
   marker.bindPopup("<b>BARCELONA</b><br>Pledged to join in 2014.<br /><span style='font-size:10px;color:#999'>Fab Lab Barcelona...</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+  var marker2 = WE.marker([22.548819, 114.051819]).addTo(earth);
+  marker2.bindPopup("<b>SHENZHEN, CHINA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 12</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+  var marker3 = WE.marker([42.3133735,-71.0571571]).addTo(earth);
+  marker3.bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+  var marker4 = WE.marker([-26.1782598,28.29638]).addTo(earth);
+  marker4.bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
 
   // var marker2 = WE.marker([30.058056, 31.228889]).addTo(earth);
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
 
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([41.3909267,2.1673073], 3);
+  earth.setView([42.3133735,-71.0571571], 3);
+
+    $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
+    for (var i = 0; i < data.labs.length; i++) {
+      var item = data.labs[i];
+      // console.log(item)
+      if ( item.latitude && item.longitude ) {
+        WE.marker([item.latitude, item.longitude]).addTo(earth);
+        //.bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
+      }
+    }
+  });
 }
 
-
-
-// $.getJSON( "https://new-api.smartcitizen.me/v0/devices/world_map", function( data ) {
-//   for (var i = 0; i < data.length; i++) {
-//   var item = data[i];
-//   if ( item.latitude && item.longitude ) {
-//   L.marker([item.latitude, item.longitude]).addTo(map).bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
-//   }
-//   }
 
 });
 

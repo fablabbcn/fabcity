@@ -7,4 +7,27 @@
   background: #051321;
 }
 #earth_div{top: 0; right: 0; bottom: 0; left: 0;
-                 background-color: #000; position: absolute !important;}
+background-color: #000; position: absolute !important;}
+
+.we-pp-wrapper {
+  background: #E3183C !important;
+  box-shadow: none !important;
+  color: #FFF !important;
+  border-radius: 8px !important;
+  b {
+    color: #111 !important;
+    font-size: 1.4em !important;
+  }
+}
+.we-pp-tip {
+  background: #E3183C !important;
+}
+.we-pp-content {
+  margin: 5px 10px !important;
+}
+.we-pp-close {
+  display: none !important;
+}
+.we-pm-icon {
+  pointer-events: none;
+}
