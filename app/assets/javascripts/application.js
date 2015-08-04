@@ -22,6 +22,7 @@ L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
   id: 'eleanor.ipncow29'
 }).addTo(map);
 
+
 // $.getJSON( "https://new-api.smartcitizen.me/v0/devices/world_map", function( data ) {
 //   for (var i = 0; i < data.length; i++) {
 //     var item = data[i];
