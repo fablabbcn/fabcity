@@ -48,3 +48,29 @@ header, footer
   background: #222;
   color: #eee;
 }
+.countdown {
+  float: left;
+  font-size: 1.3em;
+}
+.countdown div {
+  display: inline;
+  margin-left: 10px;
+}
+footer ul li {
+  width: 33%;
+  float: left;
+  display: block;
+}
+footer li img {
+  width: 60%;
+  margin: 5px 20%;
+}
+aside li {
+  font-size: 2em;
+  list-style: none;
+  line-height: 1.4em;
+  font-weight: bold;
+}
+aside {
+  background: #ddd !important;
+}
