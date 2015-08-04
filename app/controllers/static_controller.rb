@@ -16,4 +16,7 @@ class StaticController < ApplicationController
 
   def contact
   end
+
+  def globe
+  end
 end
