@@ -2,6 +2,18 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+#overlay {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  left: 0;
+  height: 100%;
+  z-index: 10000;
+  text-align: center;
+  padding-top: 20px;
+  background: yellow image-url('button.png') center center no-repeat;
+  display: none;
+}
 #map {
   height: 100%;
   background: #051321;

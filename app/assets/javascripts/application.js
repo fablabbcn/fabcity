@@ -141,6 +141,7 @@ markers[0].addTo(earth);
 $('aside li:nth-child(1)').addClass('active').fadeIn()
 
 $('img#logo').on('click',function(){
+  $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
   window.pause = true;
   goto();
 });
