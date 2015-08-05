@@ -101,7 +101,7 @@ var places = [
 var i = 1;
 
 function add(_i) {
-  $('aside ul li:eq('+(_i-1)+')').addClass('active').fadeIn('slow')
+  $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
   markers[_i-1].addTo(earth);
 }
 
@@ -130,7 +130,7 @@ function goto() {
     doAnimation();
   } else {
     earth.panTo(places[i], { duration: 0.2});
-    setTimeout(function() { add(i) }, 2900);
+    setTimeout(function() { add(i) }, 2500);
     if (i < places.length) {
       i++;
       setTimeout(function(){ goto() }, 7000);
