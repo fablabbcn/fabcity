@@ -104,6 +104,7 @@ aside li.active {
   font-weight: 300;
   color: #999;
 }
+footer ul {}
 footer ul li {
   width: 33%;
   float: left;
