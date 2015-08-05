@@ -74,25 +74,47 @@ if ($('#earth_div').length > 0) {
   // var marker3 = WE.marker([42.3133735,-71.0571571], 'ripple.svg', 32, 32).addTo(earth);
   marker3.bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-
-
-var marker5 = WE.marker([10.5415985,76.1302717]).addTo(earth);
+  var marker5 = WE.marker([10.5415985,76.1302717]).addTo(earth);
   marker5.bindPopup("<b>KERALA, INDIA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
   var marker4 = WE.marker([-26.1782598,28.29638]).addTo(earth);
   marker4.bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-    });
+  });
 }
 
-  var before = null;
-  requestAnimationFrame(function animate(now) {
-    var c = earth.getPosition();
-    var elapsed = before? now - before: 0;
-    before = now;
-    earth.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
-    requestAnimationFrame(animate);
-  });
+
+
+var places = [
+  [42.3133735,-71.0571571],
+  [41.3909267,2.1673073],
+  [-26.1782598,28.29638],
+  [10.5415985,76.1302717],
+  [22.548819, 114.051819]
+];
+var i = 0;
+function goto() {
+  earth.panTo(places[i]);
+  if (i < places.length-1) {
+    i++;
+  } else {
+    i = 0;
+  }
+  setTimeout(function(){ goto() }, 5000);
+}
+
+goto();
+
+
+
+  // var before = null;
+  // requestAnimationFrame(function animate(now) {
+  //   var c = earth.getPosition();
+  //   var elapsed = before? now - before: 0;
+  //   before = now;
+  //   earth.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
+  //   requestAnimationFrame(animate);
+  // });
 
 
 });
