@@ -41,9 +41,9 @@ $(document).ready(function() {
 
 if ($('#earth_div').length > 0) {
   var options = {atmosphere: true, center: [0, 0], zoom: 8};
-  var earth = new WE.map('earth_div', {minAltitude: 150000, maxAltitude: 10000000});
+  var earth = new WE.map('earth_div', {minAltitude: 500000, maxAltitude: 10000000});
   WE.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-      id: 'johnrees.n3940g45'
+      id: 'johnrees.n3cfh7m6'
   }).addTo(earth);
 
   // var marker2 = WE.marker([30.058056, 31.228889]).addTo(earth);
