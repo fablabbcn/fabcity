@@ -18,6 +18,9 @@
 body {
   background: #c4d1d1;
 }
+* {
+  font-family: Lato;
+}
 .holy-grail {
   display: flex;
   min-height: 100vh;

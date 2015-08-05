@@ -16,13 +16,10 @@
 //= require turbolinks
 //= require_tree .
 
+
 $(document).ready(function() {
-  if ($('#map').length > 0) {
-    var map = L.map('map').setView([51.505, -0.09], 2);
-    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
-      maxZoom: 18,
-      id: 'eleanor.ipncow29'
-    }).addTo(map);
+
+
 
     var pulseIcon = L.icon({
       iconUrl: 'ripple.svg',
@@ -30,6 +27,13 @@ $(document).ready(function() {
       iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
       popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
     });
+
+  if ($('#map').length > 0) {
+    var map = L.map('map').setView([51.505, -0.09], 2);
+    L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+      maxZoom: 18,
+      id: 'eleanor.ipncow29'
+    }).addTo(map);
 
     L.marker([41.3909267,2.1673073], {icon: pulseIcon}).addTo(map)
 
@@ -42,6 +46,24 @@ if ($('#earth_div').length > 0) {
       id: 'johnrees.n3940g45'
   }).addTo(earth);
 
+  // var marker2 = WE.marker([30.058056, 31.228889]).addTo(earth);
+  // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
+  // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
+
+  earth.setView([40,-71.0571571], 2.3);
+
+    $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
+      for (var i = 0; i < data.labs.length; i++) {
+        var item = data.labs[i];
+        // console.log(item)
+        if ( item.latitude && item.longitude ) {
+          WE.marker([item.latitude,item.longitude], 'lab.png', 4, 4).addTo(earth);
+          // WE.marker([item.latitude, item.longitude]).addTo(earth);
+          //.bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
+        }
+      }
+
+
   var marker = WE.marker([41.3909267,2.1673073]).addTo(earth);
   marker.bindPopup("<b>BARCELONA</b><br>Pledged to join in 2014.<br /><span style='font-size:10px;color:#999'>Fab Lab Barcelona...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
@@ -49,29 +71,13 @@ if ($('#earth_div').length > 0) {
   marker2.bindPopup("<b>SHENZHEN, CHINA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 12</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
   var marker3 = WE.marker([42.3133735,-71.0571571]).addTo(earth);
+  // var marker3 = WE.marker([42.3133735,-71.0571571], 'ripple.svg', 32, 32).addTo(earth);
   marker3.bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
   var marker4 = WE.marker([-26.1782598,28.29638]).addTo(earth);
   marker4.bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-
-  // var marker2 = WE.marker([30.058056, 31.228889]).addTo(earth);
-  // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
-
-  // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
-
-  earth.setView([42.3133735,-71.0571571], 3);
-
-    $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
-    for (var i = 0; i < data.labs.length; i++) {
-      var item = data.labs[i];
-      // console.log(item)
-      if ( item.latitude && item.longitude ) {
-        WE.marker([item.latitude, item.longitude]).addTo(earth);
-        //.bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
-      }
-    }
-  });
+    });
 }
 
 
