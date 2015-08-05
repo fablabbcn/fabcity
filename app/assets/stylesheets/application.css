@@ -15,6 +15,11 @@
 *= require_self
 */
 
+a {
+  color: #73B6E6;
+  text-decoration: none;
+}
+
 body {
   background: #c4d1d1;
 }
@@ -67,6 +72,7 @@ header, footer
 }
 .countdown {
   float: left;
+  margin-left: 10px;
   font-size: 3em;
   margin-top: 10px;
 }
