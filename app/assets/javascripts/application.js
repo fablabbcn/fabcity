@@ -114,7 +114,7 @@ function doAnimation() {
         var elapsed = before? now - before: 0;
         before = now;
         // c[0]
-        earth.setCenter([17, c[1] + 0.1*(elapsed/5)]);
+        earth.setCenter([17, c[1] + 0.1*(elapsed/10)]);
         requestAnimationFrame(animate);
       }
     }
