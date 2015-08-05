@@ -50,7 +50,7 @@ if ($('#earth_div').length > 0) {
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([40,-71.0571571], 2.3);
+  earth.setView([30,-71.0571571], 2.6);
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
@@ -79,6 +79,15 @@ if ($('#earth_div').length > 0) {
 
     });
 }
+
+  var before = null;
+  requestAnimationFrame(function animate(now) {
+    var c = earth.getPosition();
+    var elapsed = before? now - before: 0;
+    before = now;
+    earth.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
+    requestAnimationFrame(animate);
+  });
 
 
 });
