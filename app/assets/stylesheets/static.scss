@@ -10,6 +10,9 @@
   span {
   color: darken(#E3183C, 30%) !important;
 }
+span {
+  color: #000 !important;
+}
   cursor: grab;
   &:active {
     cursor: grabbing;

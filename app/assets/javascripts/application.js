@@ -16,6 +16,7 @@
 //= require turbolinks
 //= require_tree .
 
+window.pause = false;
 
 $(document).ready(function() {
 
@@ -40,17 +41,21 @@ $(document).ready(function() {
   }
 
 if ($('#earth_div').length > 0) {
-  var options = {atmosphere: true, center: [0, 0], zoom: 8};
+  var options = {atmosphere: false, center: [0, 0], zoom: 2};
   var earth = new WE.map('earth_div', {minAltitude: 500000, maxAltitude: 10000000});
-  WE.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png?1', {
-      id: 'johnrees.n3cfh7m6'
+  // WE.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png?1', {
+  //     id: 'johnrees.n3cfh7m6'
+  // }).addTo(earth);
+  WE.tileLayer('http://otile{s}.mqcdn.com/tiles/1.0.0/sat/{z}/{x}/{y}.jpg', {
+    subdomains: '1234',
+    attribution: 'Tiles Courtesy of MapQuest'
   }).addTo(earth);
 
   // var marker2 = WE.marker([30.058056, 31.228889]).addTo(earth);
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([41.3909267,2.1673073], 2.6);
+  earth.setView([41.3909267,2.1673073], 2.2);
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
@@ -99,34 +104,46 @@ function add(_i) {
   $('aside ul li:eq('+(_i-1)+')').addClass('active').fadeIn('slow')
   markers[_i-1].addTo(earth);
 }
+
+function doAnimation() {
+  var before = null;
+  requestAnimationFrame(
+    function animate(now) {
+      if (!window.pause) {
+        var c = earth.getPosition();
+        var elapsed = before? now - before: 0;
+        before = now;
+        // c[0]
+        earth.setCenter([17, c[1] + 0.1*(elapsed/10)]);
+        requestAnimationFrame(animate);
+      }
+    }
+  );
+}
+
+doAnimation();
+
 function goto() {
-  setTimeout(function() { add(i) }, 2000);
-  earth.panTo(places[i], { easeLinearity: 0});
   $('aside li').removeClass('active')
-  if (i < places.length) {
-    i++;
+  if (i == places.length) {
+    window.pause = null;
+    doAnimation();
   } else {
-    i = 0;
+    earth.panTo(places[i], { duration: 0.2});
+    setTimeout(function() { add(i) }, 2900);
+    if (i < places.length) {
+      i++;
+      setTimeout(function(){ goto() }, 7000);
+    }
   }
-  setTimeout(function(){ goto() }, 7000);
 }
 markers[0].addTo(earth);
 $('aside li:nth-child(1)').addClass('active').fadeIn()
 
 $('img#logo').on('click',function(){
+  window.pause = true;
   goto();
 });
-
-
-
-  // var before = null;
-  // requestAnimationFrame(function animate(now) {
-  //   var c = earth.getPosition();
-  //   var elapsed = before? now - before: 0;
-  //   before = now;
-  //   earth.setCenter([c[0], c[1] + 0.1*(elapsed/30)]);
-  //   requestAnimationFrame(animate);
-  // });
 
 
 });
