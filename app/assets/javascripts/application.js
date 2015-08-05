@@ -55,7 +55,7 @@ if ($('#earth_div').length > 0) {
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([41.3909267,2.1673073], 2.2);
+  earth.setView([42.3133735,-71.0571571], 2.2);
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
