@@ -15,6 +15,10 @@
 *= require_self
 */
 
+* {
+  box-sizing: border-box;
+}
+
 a {
   color: #73B6E6;
   text-decoration: none;
@@ -57,6 +61,7 @@ header {
 }
 header, footer
 {
+  overflow: hidden;
   background: #222;
   color: #eee;
 }
@@ -94,6 +99,7 @@ footer ul li {
   width: 33%;
   float: left;
   display: block;
+  height: 50px !important;
 }
 footer li img {
   max-width: 50%;
