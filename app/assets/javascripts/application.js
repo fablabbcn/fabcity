@@ -42,7 +42,7 @@ $(document).ready(function() {
 if ($('#earth_div').length > 0) {
   var options = {atmosphere: true, center: [0, 0], zoom: 8};
   var earth = new WE.map('earth_div', {minAltitude: 500000, maxAltitude: 10000000});
-  WE.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
+  WE.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png?1', {
       id: 'johnrees.n3cfh7m6'
   }).addTo(earth);
 
@@ -94,7 +94,7 @@ var places = [
 ];
 var i = 0;
 function goto() {
-  earth.panTo(places[i]);
+  earth.panTo(places[i], { easeLinearity: 0});
   if (i < places.length-1) {
     i++;
   } else {
