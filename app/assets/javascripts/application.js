@@ -50,7 +50,7 @@ if ($('#earth_div').length > 0) {
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([30,-71.0571571], 2.6);
+  earth.setView([41.3909267,2.1673073], 2.6);
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
@@ -62,48 +62,60 @@ if ($('#earth_div').length > 0) {
           //.bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
         }
       }
+    });
 
 
-  var marker = WE.marker([41.3909267,2.1673073]).addTo(earth);
-  marker.bindPopup("<b>BARCELONA</b><br>Pledged to join in 2014.<br /><span style='font-size:10px;color:#999'>Fab Lab Barcelona...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-  var marker2 = WE.marker([22.548819, 114.051819]).addTo(earth);
-  marker2.bindPopup("<b>SHENZHEN, CHINA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 12</span>", {maxWidth: 150, closeButton: true}).openPopup();
-
-  var marker3 = WE.marker([42.3133735,-71.0571571]).addTo(earth);
-  // var marker3 = WE.marker([42.3133735,-71.0571571], 'ripple.svg', 32, 32).addTo(earth);
-  marker3.bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
-
-  var marker5 = WE.marker([10.5415985,76.1302717]).addTo(earth);
-  marker5.bindPopup("<b>KERALA, INDIA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
-
-  var marker4 = WE.marker([-26.1782598,28.29638]).addTo(earth);
-  marker4.bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
-
-  });
 }
 
+var markers = [];
+
+markers.push(WE.marker([41.3909267,2.1673073]));
+markers[markers.length - 1].bindPopup("<b>BARCELONA</b><br>Pledged to join in 2014.<br /><span style='font-size:10px;color:#999'>Fab Lab Barcelona...</span>", {maxWidth: 150, closeButton: true}).openPopup()
+
+markers.push(WE.marker([42.3133735,-71.0571571]));
+markers[markers.length - 1].bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+markers.push(WE.marker([-26.1782598,28.29638]));
+markers[markers.length - 1].bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+markers.push(WE.marker([10.5415985,76.1302717]));
+markers[markers.length - 1].bindPopup("<b>KERALA, INDIA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
+
+markers.push(WE.marker([22.548819, 114.051819]));
+markers[markers.length - 1].bindPopup("<b>SHENZHEN, CHINA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 12</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
 
 var places = [
-  [42.3133735,-71.0571571],
   [41.3909267,2.1673073],
+  [42.3133735,-71.0571571],
   [-26.1782598,28.29638],
   [10.5415985,76.1302717],
   [22.548819, 114.051819]
 ];
-var i = 0;
+var i = 1;
+
+function add(_i) {
+  $('aside ul li:eq('+(_i-1)+')').addClass('active').fadeIn('slow')
+  markers[_i-1].addTo(earth);
+}
 function goto() {
+  setTimeout(function() { add(i) }, 2000);
   earth.panTo(places[i], { easeLinearity: 0});
-  if (i < places.length-1) {
+  $('aside li').removeClass('active')
+  if (i < places.length) {
     i++;
   } else {
     i = 0;
   }
-  setTimeout(function(){ goto() }, 5000);
+  setTimeout(function(){ goto() }, 7000);
 }
+markers[0].addTo(earth);
+$('aside li:nth-child(1)').addClass('active').fadeIn()
 
-goto();
+$('img#logo').on('click',function(){
+  goto();
+});
 
 
 

@@ -88,6 +88,14 @@ header, footer
   text-align: center;
   font-weight: 900;
 }
+aside li {
+  display: none;
+  color: #444;
+  transition: all 1s;
+}
+aside li.active {
+  color: #E3183C;
+  }
 .countdown div span {
   display: block;
   font-size: 0.3em;
