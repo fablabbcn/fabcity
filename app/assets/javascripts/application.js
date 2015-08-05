@@ -55,14 +55,14 @@ if ($('#earth_div').length > 0) {
   // marker2.bindPopup("<b>Cairo</b><br>Yay, you found me!", {maxWidth: 120, closeButton: false});
   // var markerCustom = WE.marker([24, 24], 'ripple.svg', 24, 24).addTo(earth);
 
-  earth.setView([42.3133735,-71.0571571], 2.2);
+  earth.setView([42.3133735,-71.0571571], 2.4);
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
         var item = data.labs[i];
         // console.log(item)
         if ( item.latitude && item.longitude ) {
-          WE.marker([item.latitude,item.longitude], 'lab.png', 4, 4).addTo(earth);
+          WE.marker([item.latitude,item.longitude], 'lab.png', 5, 5).addTo(earth);
           // WE.marker([item.latitude, item.longitude]).addTo(earth);
           //.bindPopup('<a href="/v0/devices/' + item.id + '">' + item.id + '</a>: ' + item.name);
         }
@@ -75,19 +75,19 @@ if ($('#earth_div').length > 0) {
 
 var markers = [];
 
-markers.push(WE.marker([41.3909267,2.1673073]));
+markers.push(WE.marker([41.3909267,2.1673073], 'lab.png', 5, 5));
 markers[markers.length - 1].bindPopup("<b>BARCELONA</b><br>Pledged to join in 2014.<br /><span style='font-size:10px;color:#999'>Fab Lab Barcelona...</span>", {maxWidth: 150, closeButton: true}).openPopup()
 
-markers.push(WE.marker([42.3133735,-71.0571571]));
+markers.push(WE.marker([42.3133735,-71.0571571], 'lab.png', 5, 5));
 markers[markers.length - 1].bindPopup("<b>BOSTON, USA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 11</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-markers.push(WE.marker([-26.1782598,28.29638]));
+markers.push(WE.marker([-26.1782598,28.29638], 'lab.png', 5, 5));
 markers[markers.length - 1].bindPopup("<b>EKURHULENI, SOUTH AFRICA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-markers.push(WE.marker([10.5415985,76.1302717]));
+markers.push(WE.marker([10.5415985,76.1302717], 'lab.png', 5, 5));
 markers[markers.length - 1].bindPopup("<b>KERALA, INDIA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>...</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
-markers.push(WE.marker([22.548819, 114.051819]));
+markers.push(WE.marker([22.548819, 114.051819], 'lab.png', 5, 5));
 markers[markers.length - 1].bindPopup("<b>SHENZHEN, CHINA</b><br>Pledged to join in 2015.<br /><span style='font-size:10px;color:#999'>Hosting Fab 12</span>", {maxWidth: 150, closeButton: true}).openPopup();
 
 
