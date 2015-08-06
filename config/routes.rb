@@ -1,19 +1,17 @@
 Rails.application.routes.draw do
 
-  root to: 'static#globe'
+
   get 'static/home'
-
   get 'static/about'
-
   get 'static/cities'
-
   get 'static/self_sufficiency'
-
   get 'static/join'
-
   get 'static/contact'
 
-  get 'globe' => 'static#globe'
+  get 'map' => 'static#map', as: 'map'
+  get 'globe' => 'static#globe', as: 'globe'
+
+root to: 'static#globe'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

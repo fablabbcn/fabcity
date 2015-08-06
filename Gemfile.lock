@@ -1,3 +1,10 @@
+GIT
+  remote: git://github.com/bokmann/font-awesome-rails.git
+  revision: f5025bf7e9c4afef7e6a39248554b7e95daf326d
+  specs:
+    font-awesome-rails (4.4.0.0)
+      railties (>= 3.2, < 5.0)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -154,6 +161,7 @@ DEPENDENCIES
   autoprefixer-rails
   byebug
   coffee-rails (~> 4.1.0)
+  font-awesome-rails!
   jbuilder (~> 2.0)
   jquery-rails
   normalize-rails

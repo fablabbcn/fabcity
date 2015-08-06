@@ -11,6 +11,7 @@
 * file per style scope.
 *
 *= require normalize-rails
+*= require font-awesome
 *= require_tree .
 *= require_self
 */
@@ -126,4 +127,24 @@ aside li {
 aside {
   background: #ddd !important;
   padding-top: 80px;
+}
+
+.button {
+  position: absolute;
+  top: 10px;
+  background: #003C8D;
+  display: block;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  text-align: center;
+  border-radius: 2px;
+  font-size: 22px;
+  color: #FFF;
+}
+.button.globe {
+  right: 10px;
+}
+.button.map {
+  right: 60px;
 }

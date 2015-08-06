@@ -19,4 +19,7 @@ class StaticController < ApplicationController
 
   def globe
   end
+
+  def map
+  end
 end
