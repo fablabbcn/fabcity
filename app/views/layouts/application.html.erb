@@ -21,7 +21,10 @@
     </div>
   </header>
   <div class="holy-grail-body">
-    <main class="holy-grail-content" style="position: relative"><%= yield %></main>
+    <main class="holy-grail-content" style="position: relative">
+    <%= yield %>
+    <div id="legend"><span style="color: #FFEA00; padding-right: 5px;"><%= fa_icon "circle" %></span> <span id="count"></span> Fab Labs registered on <a href="http://fablabs.io">fablabs.io</a></div>
+    </main>
     <aside class="holy-grail-sidebar">
       <ul>
         <% @cities.each do |city| %>

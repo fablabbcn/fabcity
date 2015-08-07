@@ -13,6 +13,7 @@ $(document).ready(function() {
 
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
+      $('#count').html(data.labs.length)
       for (var i = 0; i < data.labs.length; i++) {
         var item = data.labs[i];
         if ( item.latitude && item.longitude ) {
@@ -26,7 +27,7 @@ $(document).ready(function() {
     function add(_i) {
       $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
       window.markers[_i-1].addTo(earth);
-      setTimeout(function() { window.pause = null; doAnimation(); }, 2000);
+      setTimeout(function() { window.pause = null; doAnimation(); }, 1500);
     }
 
     function doAnimation() {
