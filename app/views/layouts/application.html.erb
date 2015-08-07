@@ -2,44 +2,33 @@
 <html lang="en">
 <head>
   <title>Fab City</title>
-  <%= stylesheet_link_tag    '//fonts.googleapis.com/css?family=Lato:400,900,300', '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css', 'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= stylesheet_link_tag '//fonts.googleapis.com/css?family=Lato:400,900,300', '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.css', 'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
+  <script type="text/javascript">
+    window.markers = []
+    window.places = []
+  </script>
 </head>
 <body class="holy-grail">
-<div id="overlay">
-</div>
-
-<%= image_tag "fabcity.png", style: 'position: absolute; top: 10px;; right: 70px; height: 160px;', id: 'logo' %>
-
+  <div id="overlay"></div>
+  <%= image_tag "fabcity.png", style: 'position: absolute; top: 10px;; right: 70px; height: 160px;', id: 'logo' %>
   <header>
-<div id="countdown">
-  <div class="countdown styled"></div>
-  <div id="countdown-desc">
-  until we're <span style="color: #fff">globally connected</span><br/> and <span style="color: #fff">locally self-sufficient</span> &nbsp;&nbsp;<a href="#">more...</a>
-  </div>
-</div>
-
+    <div id="countdown">
+      <div class="countdown styled"></div>
+      <div id="countdown-desc">
+      until we're <span style="color: #fff">globally connected</span><br/> and <span style="color: #fff">locally self-sufficient</span> &nbsp;&nbsp;<a href="#">more...</a>
+      </div>
+    </div>
   </header>
   <div class="holy-grail-body">
-      <main class="holy-grail-content" style="position: relative">
-          <%= yield %>
-      </main>
-<!--       <nav class="holy-grail-nav">
-          <h2>Navigation</h2>
-      </nav> -->
-      <aside class="holy-grail-sidebar">
-      <span style="color: #999; font-style: italic">click the logo and watch ;) ^</span>
+    <main class="holy-grail-content" style="position: relative"><%= yield %></main>
+    <aside class="holy-grail-sidebar">
       <ul>
-        <li>Barcelona</li>
-        <li>Boston<br/>
-        Cambridge<br/>
-        Somerville</li>
-        <li>Ekurhuleni</li>
-        <li>Kerala</li>
-        <li>Shenzhen</li>
-
+        <% @cities.each do |city| %>
+          <li><%= city %></li>
+        <% end %>
       </ul>
-      </aside>
+    </aside>
   </div>
   <footer>
   <ul>
@@ -51,4 +40,15 @@
 
 </body>
 <%= javascript_include_tag 'https://www.webglearth.com/v2/api.js', '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js', 'application', 'data-turbolinks-track' => true %>
+<script type="text/javascript">
+  var place = null;
+  var marker = null;
+  <% @cities.each do |city| %>
+  place = [<%= city.lat %>, <%= city.lng %>]
+  marker = WE.marker(place, 'lab.png', 5, 5);
+  window.markers.push(marker);
+  window.places.push(place);
+  marker.bindPopup("<b><%= city.name %></b><%= simple_format city.description %>", {maxWidth: 100}).openPopup()
+  <% end %>
+</script>
 </html>

@@ -18,6 +18,7 @@ class StaticController < ApplicationController
   end
 
   def globe
+    @cities = City.order(ordinal: :asc)
   end
 
   def map

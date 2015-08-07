@@ -148,3 +148,7 @@ aside {
 .button.map {
   right: 60px;
 }
+
+p {
+  margin: 0 !important;
+}
