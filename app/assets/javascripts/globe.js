@@ -9,7 +9,8 @@ $(document).ready(function() {
       attribution: 'Tiles Courtesy of MapQuest'
     }).addTo(earth);
 
-    earth.setView([22.548819,-71.0571571], 2.4);
+    earth.setView([25.3909267,50.1673073], 2.4);
+
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       for (var i = 0; i < data.labs.length; i++) {
