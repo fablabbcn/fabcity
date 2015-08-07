@@ -25,11 +25,13 @@ $(document).ready(function() {
     function add(_i) {
       $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
       window.markers[_i-1].addTo(earth);
-
       setTimeout(function() { window.pause = null; doAnimation(); }, 2000);
     }
 
     function doAnimation() {
+
+      $('aside li').removeClass('active')
+
       var before = null;
       requestAnimationFrame(
         function animate(now) {
@@ -37,7 +39,7 @@ $(document).ready(function() {
             var c = earth.getPosition();
             var elapsed = before? now - before: 0;
             before = now;
-            earth.setCenter([c[0], c[1] + 0.1*(elapsed/10)]);
+            earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
             requestAnimationFrame(animate);
           }
         }
@@ -53,7 +55,7 @@ $(document).ready(function() {
       //   doAnimation();
       // } else {
         earth.panTo(window.places[i], { duration: 0.2});
-        setTimeout(function() { add(i) }, 2500);
+        setTimeout(function() { add(i) }, 2000);
 
         // window.pause = null;
         // doAnimation();
@@ -66,7 +68,7 @@ $(document).ready(function() {
     }
 
     window.markers[0].addTo(earth);
-    $('aside li:nth-child(1)').addClass('active').fadeIn()
+    $('aside li:nth-child(1)').fadeIn()
 
     $('img#logo').on('click',function(){
       // $('img#logo').off('click')
