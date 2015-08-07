@@ -59,11 +59,7 @@ $(document).ready(function() {
 
         // window.pause = null;
         // doAnimation();
-
-        if (i < window.places.length) {
-          i++;
-          // setTimeout(function(){ goto() }, 7000);
-        }
+        i++;
       // }
     }
 
@@ -71,7 +67,11 @@ $(document).ready(function() {
     $('aside li:nth-child(1)').fadeIn()
 
     $('img#logo').on('click',function(){
-      // $('img#logo').off('click')
+      if (i == window.places.length - 1) {
+        $('img#logo').off('click')
+        // setTimeout(function(){ goto() }, 7000);
+      }
+      //
       $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
       window.pause = true;
       goto();
