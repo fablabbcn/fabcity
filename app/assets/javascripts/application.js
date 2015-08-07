@@ -18,8 +18,8 @@
 window.pause = false;
 
 window.pulseIcon = L.icon({
-  iconUrl: 'ripple.svg',
-  iconSize:     [24, 24], // size of the icon
-  iconAnchor:   [12, 12], // point of the icon which will correspond to marker's location
+  iconUrl: 'labmap.png',
+  iconSize:     [5, 5], // size of the icon
+  iconAnchor:   [2, 2], // point of the icon which will correspond to marker's location
   popupAnchor:  [0, 0] // point from which the popup should open relative to the iconAnchor
 })

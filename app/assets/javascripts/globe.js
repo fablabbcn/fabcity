@@ -11,7 +11,6 @@ $(document).ready(function() {
 
     earth.setView([25.3909267,50.1673073], 2.4);
 
-
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       $('#count').html(data.labs.length)
       for (var i = 0; i < data.labs.length; i++) {
@@ -68,16 +67,19 @@ $(document).ready(function() {
     window.markers[0].addTo(earth);
     $('aside li:nth-child(1)').fadeIn()
 
-    $('img#logo').on('click',function(){
-      if (i == window.places.length - 1) {
+    function clicker() {
+      $('img#logo').on('click',function(){
         $('img#logo').off('click')
-        // setTimeout(function(){ goto() }, 7000);
-      }
-      //
-      $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
-      window.pause = true;
-      goto();
-    });
+        if (i < window.places.length) {
+          $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
+          window.pause = true;
+          goto();
+        }
+        setTimeout(function() { clicker() }, 4000);
+      });
+    }
+
+    clicker();
 
   }
 });

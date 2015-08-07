@@ -7,7 +7,17 @@ $(document).ready(function() {
       id: 'johnrees.ined2i0c'
     }).addTo(map);
 
-    L.marker([41.3909267,2.1673073], {icon: window.pulseIcon}).addTo(map)
+    $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
+      $('#count').html(data.labs.length)
+      for (var i = 0; i < data.labs.length; i++) {
+        var item = data.labs[i];
+        if ( item.latitude && item.longitude ) {
+          L.marker([item.latitude,item.longitude], {icon: window.pulseIcon}).addTo(map)
+        }
+      }
+    });
+
+    // L.marker([41.3909267,2.1673073], {icon: window.pulseIcon}).addTo(map)
   }
 
 });
