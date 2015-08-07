@@ -22,5 +22,6 @@ class StaticController < ApplicationController
   end
 
   def map
+    @cities = City.order(ordinal: :asc)
   end
 end
