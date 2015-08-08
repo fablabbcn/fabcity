@@ -32,19 +32,19 @@ $(document).ready(function() {
     }
 
     function doAnimation() {
-      // $('aside li').removeClass('active')
-      // var before = null;
-      // requestAnimationFrame(
-      //   function animate(now) {
-      //     if (!window.pause) {
-      //       var c = earth.getPosition();
-      //       var elapsed = before? now - before: 0;
-      //       before = now;
-      //       earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
-      //       requestAnimationFrame(animate);
-      //     }
-      //   }
-      // );
+      $('aside li').removeClass('active')
+      var before = null;
+      requestAnimationFrame(
+        function animate(now) {
+          if (!window.pause) {
+            var c = earth.getPosition();
+            var elapsed = before? now - before: 0;
+            before = now;
+            earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
+            requestAnimationFrame(animate);
+          }
+        }
+      );
     }
 
     doAnimation();
