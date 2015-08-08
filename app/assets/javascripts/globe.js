@@ -9,7 +9,7 @@ $(document).ready(function() {
       attribution: 'Tiles Courtesy of MapQuest'
     }).addTo(earth);
 
-    earth.setView([25.3909267,50.1673073], 2.4);
+
     // earth.setTilt(223)
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
@@ -22,75 +22,83 @@ $(document).ready(function() {
       }
     });
 
-    var i = 1;
-
-    function add(_i) {
-      $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
-      window.markers[_i-1].addTo(earth);
-
-      window.markers[2]
-      if (i == window.markers.length) {
-        setTimeout(function() { window.pause = null; doAnimation(); }, 7000);
+    if ( true ) {
+      earth.setView([25.3909267,-5], 2.4);
+      for(var i = 0; i < window.markers.length; i++) {
+        window.markers[i].addTo(earth);
       }
-    }
+    } else {
+      earth.setView([25.3909267,50.1673073], 2.4);
+      var i = 1;
 
-    function doAnimation() {
-      $('aside li').removeClass('active')
-      var before = null;
-      requestAnimationFrame(
-        function animate(now) {
-          if (!window.pause) {
-            var c = earth.getPosition();
-            var elapsed = before? now - before: 0;
-            before = now;
-            earth.setCenter([ Math.max(10,c[0]-0.1), c[1] - 0.1*(elapsed/8)]);
-            requestAnimationFrame(animate);
+      function add(_i) {
+        $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
+        window.markers[_i-1].addTo(earth);
+
+        window.markers[2]
+        if (i == window.markers.length) {
+          setTimeout(function() { window.pause = null; doAnimation(); }, 7000);
+        }
+      }
+
+      function doAnimation() {
+        $('aside li').removeClass('active')
+        var before = null;
+        requestAnimationFrame(
+          function animate(now) {
+            if (!window.pause) {
+              var c = earth.getPosition();
+              var elapsed = before? now - before: 0;
+              before = now;
+              earth.setCenter([ Math.max(10,c[0]-0.1), c[1] - 0.1*(elapsed/8)]);
+              requestAnimationFrame(animate);
+            }
           }
-        }
-      );
+        );
+      }
+
+      doAnimation();
+
+      function goto() {
+        $('aside li').removeClass('active')
+        // if (i == window.places.length) {
+        //   window.pause = null;
+        //   doAnimation();
+        // } else {
+          // earth.zoomOut()
+          earth.panTo(window.places[i], { duration: 0.2});
+          setTimeout(function() { add(i) }, 500);
+
+          // window.pause = null;
+          // doAnimation();
+          i++;
+        // }
+      }
+
+      window.markers[0].addTo(earth);
+      $('aside li:nth-child(1)').fadeIn()
+
+      function clicker() {
+        $('img#logo').on('click',function(){
+          $('img#logo').off('click')
+          if (i < window.places.length) {
+            $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
+            window.pause = true;
+            goto();
+          }
+          setTimeout(function() { clicker() }, 2500);
+        });
+      }
+
+      clicker();
+
+      $('aside li:gt(0)').hide()
+
     }
 
-    doAnimation();
-
-    function goto() {
-      $('aside li').removeClass('active')
-      // if (i == window.places.length) {
-      //   window.pause = null;
-      //   doAnimation();
-      // } else {
-        // earth.zoomOut()
-        earth.panTo(window.places[i], { duration: 0.2});
-        setTimeout(function() { add(i) }, 500);
-
-        // window.pause = null;
-        // doAnimation();
-        i++;
-      // }
-    }
-
-    window.markers[0].addTo(earth);
-    $('aside li:nth-child(1)').fadeIn()
-
-    function clicker() {
-      $('img#logo').on('click',function(){
-        $('img#logo').off('click')
-        if (i < window.places.length) {
-          $('#overlay').fadeIn(100).delay(50).fadeOut('fast')
-          window.pause = true;
-          goto();
-        }
-        setTimeout(function() { clicker() }, 2500);
-      });
-    }
-
-    clicker();
-
-    $('aside li:gt(0)').hide()
-
-
-    $(window.markers[1].element).find('.we-pp').first().css({top: -15, left: 5})
-    $(window.markers[1].element).find('.we-pp-tip-cont').hide()
-    $(window.markers[3].element).find('.we-pp').first().css({left: -142, top: -15})
-    $(window.markers[3].element).find('.we-pp-tip-cont').hide()
+      $(window.markers[1].element).find('.we-pp').first().css({top: -15, left: 5})
+      $(window.markers[1].element).find('.we-pp-tip-cont').hide()
+      $(window.markers[3].element).find('.we-pp').first().css({left: -142, top: -15})
+      $(window.markers[3].element).find('.we-pp-tip-cont').hide()
   }
 });

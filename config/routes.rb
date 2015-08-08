@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   get 'map' => 'static#map', as: 'map'
   get 'globe' => 'static#globe', as: 'globe'
 
-  root to: 'static#home'
+  root to: 'static#globe'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
