@@ -42,8 +42,16 @@
   </footer>
 
 </body>
+
+<%#= javascript_include_tag 'http://lin2.server.smartcitizen.me:9292/faye/client.js' %>
 <%= javascript_include_tag 'https://www.webglearth.com/v2/api.js', '//cdnjs.cloudflare.com/ajax/libs/leaflet/0.7.3/leaflet.js', 'application', 'data-turbolinks-track' => true %>
+
 <script type="text/javascript">
+  // var faye = new Faye.Client('http://lin2.server.smartcitizen.me:9292/faye');
+  // faye.subscribe("/messages/new", function(data) {
+  //   eval(data);
+  // });
+
   var place = null;
   var marker = null;
   <% @cities.each do |city| %>

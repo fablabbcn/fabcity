@@ -30,9 +30,7 @@ $(document).ready(function() {
     }
 
     function doAnimation() {
-
       $('aside li').removeClass('active')
-
       var before = null;
       requestAnimationFrame(
         function animate(now) {

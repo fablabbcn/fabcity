@@ -5,6 +5,7 @@ source 'https://rubygems.org'
 gem 'rails', '4.2.3'
 
 gem 'puma'
+gem 'faye'
 
 group :production do
   gem 'pg'

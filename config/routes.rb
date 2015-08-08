@@ -8,6 +8,7 @@ Rails.application.routes.draw do
   get 'static/join'
   get 'static/contact'
 
+  get 'press' => 'static#press', as: 'press'
   get 'map' => 'static#map', as: 'map'
   get 'globe' => 'static#globe', as: 'globe'
 

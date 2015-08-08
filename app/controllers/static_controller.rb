@@ -24,4 +24,8 @@ class StaticController < ApplicationController
   def map
     @cities = City.order(ordinal: :asc)
   end
+
+  def press
+    render text: 'ok', status: :ok
+  end
 end

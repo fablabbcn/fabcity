@@ -62,3 +62,12 @@ City.create!(
   lng: 114.051819,
   announced_at: nil
 )
+
+City.create!(
+  ordinal: 70,
+  name: 'Georgia',
+  description: 'Pledged in 2015',
+  lat: 42.3207845,
+  lng: 43.3713615,
+  announced_at: '2015-07-08'
+)
