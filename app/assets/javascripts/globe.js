@@ -10,6 +10,7 @@ $(document).ready(function() {
     }).addTo(earth);
 
     earth.setView([25.3909267,50.1673073], 2.4);
+    // earth.setTilt(223)
 
     $.getJSON( "https://api.fablabs.io/v0/labs.json", function( data ) {
       $('#count').html(data.labs.length)
@@ -57,8 +58,9 @@ $(document).ready(function() {
       //   window.pause = null;
       //   doAnimation();
       // } else {
+        // earth.zoomOut()
         earth.panTo(window.places[i], { duration: 0.2});
-        setTimeout(function() { add(i) }, 2000);
+        setTimeout(function() { add(i) }, 500);
 
         // window.pause = null;
         // doAnimation();
@@ -86,9 +88,9 @@ $(document).ready(function() {
     $('aside li:gt(0)').hide()
 
 
-    $(window.markers[3].element).find('.we-pp').first().css({top: -15, left: 5})
+    $(window.markers[1].element).find('.we-pp').first().css({top: -15, left: 5})
+    $(window.markers[1].element).find('.we-pp-tip-cont').hide()
+    $(window.markers[3].element).find('.we-pp').first().css({left: -142, top: -15})
     $(window.markers[3].element).find('.we-pp-tip-cont').hide()
-    $(window.markers[5].element).find('.we-pp').first().css({left: -142, top: -15})
-    $(window.markers[5].element).find('.we-pp-tip-cont').hide()
   }
 });
