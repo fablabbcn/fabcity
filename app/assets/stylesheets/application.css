@@ -120,9 +120,10 @@ footer li img {
   /*height: 50px;*/
 }
 aside li {
-  font-size: 1.6em;
+  font-size: 1.7em;
   list-style: none;
-  line-height: 1.28em;
+  line-height: 1.4em;
+  text-shadow: 1px 1px 1px #eee;
   font-weight: bold;
 }
 aside {
