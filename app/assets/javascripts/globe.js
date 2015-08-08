@@ -28,7 +28,9 @@ $(document).ready(function() {
       window.markers[_i-1].addTo(earth);
 
       window.markers[2]
-      setTimeout(function() { window.pause = null; doAnimation(); }, 1500);
+      if (i == window.markers.length) {
+        setTimeout(function() { window.pause = null; doAnimation(); }, 1500);
+      }
     }
 
     function doAnimation() {
@@ -40,7 +42,7 @@ $(document).ready(function() {
             var c = earth.getPosition();
             var elapsed = before? now - before: 0;
             before = now;
-            earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
+            earth.setCenter([20, c[1] - 0.1*(elapsed/8)]);
             requestAnimationFrame(animate);
           }
         }
@@ -75,7 +77,7 @@ $(document).ready(function() {
           window.pause = true;
           goto();
         }
-        setTimeout(function() { clicker() }, 4000);
+        setTimeout(function() { clicker() }, 3000);
       });
     }
 
