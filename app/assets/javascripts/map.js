@@ -1,7 +1,7 @@
 $(document).ready(function() {
 
   if ($('#map').length > 0) {
-    var map = L.map('map').setView([51.505, -0.09], 2);
+    var map = L.map('map').setView([42.3057566,-71.0564704], 11);
     L.tileLayer('https://{s}.tiles.mapbox.com/v3/{id}/{z}/{x}/{y}.png', {
       maxZoom: 18,
       id: 'johnrees.ined2i0c'

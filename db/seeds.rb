@@ -13,8 +13,8 @@ City.create!(
   ordinal: 50,
   name: 'Cambridge',
   description: 'Pledged in 2015',
-  lat: 42.3783903,
-  lng: -71.1129096,
+  lat: 42.373762,
+  lng: -71.109562,
   announced_at: nil
 )
 
@@ -22,8 +22,8 @@ City.create!(
   ordinal: 10,
   name: 'Somerville',
   description: 'Pledged in 2015',
-  lat: 42.3875731,
-  lng: -71.1733138,
+  lat: 42.387745,
+  lng: -71.098598,
   announced_at: nil
 )
 
@@ -31,8 +31,8 @@ City.create!(
   ordinal: 30,
   name: 'Boston',
   description: 'Pledged in 2015',
-  lat: 42.3600588,
-  lng: -71.1326971,
+  lat: 42.337487,
+  lng: -71.067800,
   announced_at: nil
 )
 
@@ -69,14 +69,5 @@ City.create!(
   description: 'Pledged in 2015',
   lat: 42.3207845,
   lng: 43.3713615,
-  announced_at: nil
-)
-
-City.create!(
-  ordinal: 80,
-  name: 'Jordan',
-  description: 'Pledged in 2015',
-  lat: 31.2798619,
-  lng: 37.1297454,
   announced_at: nil
 )
