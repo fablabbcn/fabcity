@@ -120,14 +120,14 @@ footer li img {
   /*height: 50px;*/
 }
 aside li {
-  font-size: 2em;
+  font-size: 1.6em;
   list-style: none;
-  line-height: 1.4em;
+  line-height: 1.28em;
   font-weight: bold;
 }
 aside {
   background: #ddd !important;
-  padding-top: 80px;
+  padding-top: 70px;
 }
 
 .button {

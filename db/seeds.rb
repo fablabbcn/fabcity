@@ -69,5 +69,14 @@ City.create!(
   description: 'Pledged in 2015',
   lat: 42.3207845,
   lng: 43.3713615,
-  announced_at: '2015-07-08'
+  announced_at: nil
+)
+
+City.create!(
+  ordinal: 80,
+  name: 'Jordan',
+  description: 'Pledged in 2015',
+  lat: 31.2798619,
+  lng: 37.1297454,
+  announced_at: nil
 )
