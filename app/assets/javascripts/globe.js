@@ -26,23 +26,25 @@ $(document).ready(function() {
     function add(_i) {
       $('aside ul li:eq('+(_i-1)+')').addClass('active').delay(100).fadeIn('slow')
       window.markers[_i-1].addTo(earth);
+
+      window.markers[2]
       setTimeout(function() { window.pause = null; doAnimation(); }, 1500);
     }
 
     function doAnimation() {
-      $('aside li').removeClass('active')
-      var before = null;
-      requestAnimationFrame(
-        function animate(now) {
-          if (!window.pause) {
-            var c = earth.getPosition();
-            var elapsed = before? now - before: 0;
-            before = now;
-            earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
-            requestAnimationFrame(animate);
-          }
-        }
-      );
+      // $('aside li').removeClass('active')
+      // var before = null;
+      // requestAnimationFrame(
+      //   function animate(now) {
+      //     if (!window.pause) {
+      //       var c = earth.getPosition();
+      //       var elapsed = before? now - before: 0;
+      //       before = now;
+      //       earth.setCenter([c[0], c[1] - 0.1*(elapsed/8)]);
+      //       requestAnimationFrame(animate);
+      //     }
+      //   }
+      // );
     }
 
     doAnimation();
@@ -79,5 +81,10 @@ $(document).ready(function() {
 
     clicker();
 
+
+    $(window.markers[3].element).find('.we-pp').first().css({top: -15, left: 5})
+    $(window.markers[3].element).find('.we-pp-tip-cont').hide()
+    $(window.markers[5].element).find('.we-pp').first().css({left: -142, top: -15})
+    $(window.markers[5].element).find('.we-pp-tip-cont').hide()
   }
 });
