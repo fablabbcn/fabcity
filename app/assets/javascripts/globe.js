@@ -29,7 +29,7 @@ $(document).ready(function() {
 
       window.markers[2]
       if (i == window.markers.length) {
-        setTimeout(function() { window.pause = null; doAnimation(); }, 1500);
+        setTimeout(function() { window.pause = null; doAnimation(); }, 8000);
       }
     }
 
@@ -42,7 +42,7 @@ $(document).ready(function() {
             var c = earth.getPosition();
             var elapsed = before? now - before: 0;
             before = now;
-            earth.setCenter([20, c[1] - 0.1*(elapsed/8)]);
+            earth.setCenter([ Math.max(20,c[0]-0.1), c[1] - 0.1*(elapsed/8)]);
             requestAnimationFrame(animate);
           }
         }
