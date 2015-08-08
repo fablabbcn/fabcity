@@ -17,6 +17,10 @@ $(document).ready(function() {
       }
     });
 
+    for(var i = 0; i < window.map_markers.length; i++) {
+      window.map_markers[i].addTo(map)
+    }
+
     // L.marker([41.3909267,2.1673073], {icon: window.pulseIcon}).addTo(map)
   }
 

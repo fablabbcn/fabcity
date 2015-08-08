@@ -92,7 +92,6 @@ header, footer
   font-weight: 900;
 }
 aside li {
-  display: none;
   color: #444;
   transition: all 1s;
 }

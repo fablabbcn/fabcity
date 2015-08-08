@@ -83,6 +83,8 @@ $(document).ready(function() {
 
     clicker();
 
+    $('aside li:gt(0)').hide()
+
 
     $(window.markers[3].element).find('.we-pp').first().css({top: -15, left: 5})
     $(window.markers[3].element).find('.we-pp-tip-cont').hide()
