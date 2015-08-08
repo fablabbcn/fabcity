@@ -60,9 +60,10 @@
     marker = WE.marker(place, 'lab.png', 5, 5);
     window.markers.push(marker);
     window.places.push(place);
+    marker.bindPopup("<b><%= city.name.upcase %></b><%= simple_format city.description %>", {maxWidth: 100}).openPopup()
     marker = L.marker(place);
     window.map_markers.push(marker);
-    marker.bindPopup("<b><%= city.name.upcase %></b><%= simple_format city.description %>", {maxWidth: 100}).openPopup()
+    marker.bindPopup("<b><%= city.name.upcase %></b><%= simple_format city.description %>")
   <% end %>
 </script>
 </html>
