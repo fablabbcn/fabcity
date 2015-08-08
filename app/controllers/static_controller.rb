@@ -1,8 +1,9 @@
 class StaticController < ApplicationController
 
-  # skip_before_action :authenticate, only: :press
+  skip_before_action :authenticate, only: [:home, :press]
 
   def home
+    render :home, layout: false
   end
 
   def about
